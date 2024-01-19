@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./playlist.css";
 
 interface PlaylistProps {
   playlist: string[];
@@ -25,18 +26,18 @@ const Playlist: React.FC<PlaylistProps> = ({
 
   return (
     <>
-      <ul>
+      <ul className="playlist">
         {playlist.map((url, index) => (
           <li
             key={index}
-            style={{ fontWeight: url === currentVideo ? "bold" : "normal" }}
+            className={url === currentVideo ? "current-video" : "video"}
           >
             {url}
-            <button onClick={() => handleRemove(url)}> X Remove</button>
+            <button onClick={() => handleRemove(url)}> Remove</button>
           </li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-to-playlist">
         <input
           type="text"
           value={inputValue}

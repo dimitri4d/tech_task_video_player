@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Previous from "../../assets/previous.svg";
 import Rewind from "../../assets/backward.svg";
 import Pause from "../../assets/pause.svg";
 import Play from "../../assets/play.svg";
 import Forward from "../../assets/forward.svg";
 import Next from "../../assets/next.svg";
-// import './videoPlayer.css'
 
 interface VideoPlayerProps {
   playlist: string[];
@@ -18,11 +17,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   currentVideo,
   setCurrentVideo,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  useEffect(() => {
-    setCurrentVideo(playlist[0]);
-  }, []);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -71,6 +66,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onEnded={handleNext}
           autoPlay
           className="video"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
         />
 
         <div>

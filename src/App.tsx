@@ -10,7 +10,7 @@ function App() {
     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
   ]);
 
-  const [currentVideo, setCurrentVideo] = useState("");
+  const [currentVideo, setCurrentVideo] = useState(playlist[0]);
 
   return (
     <>
